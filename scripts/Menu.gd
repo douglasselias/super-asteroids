@@ -10,9 +10,11 @@ onready var Click = $Click
 func _process(delta):
 	if Input.is_action_just_pressed("ui_up"):
 		current_selected = SELECTED.START
+		emit_signal("changed_option", "START")
 		Click.play()
 	if Input.is_action_just_pressed("ui_down"):
 		current_selected = SELECTED.CONTROLS
+		emit_signal("changed_option", "CONTROLS")
 		Click.play()
 	
 	Start.modulate = Color.white

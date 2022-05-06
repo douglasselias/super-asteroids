@@ -7,8 +7,13 @@ var speed = 0
 
 onready var BoosterNode = $Booster
 onready var FireNode = $Fire
+onready var ColliderNode = $Collider
+onready var HurtNode = $Hurt
+
+signal hit
 
 func _ready():
+	ColliderNode.connect("body_entered", self, "_on_body_entered")
 	position.x = 1024 / 2
 	position.y = 600 / 2
 
@@ -39,3 +44,10 @@ func _process(delta):
 		FireNode.emitting = false
 		yield(get_tree().create_timer(0.5), "timeout")
 		BoosterNode.stop()
+		
+func _on_body_entered(node: Node):
+	if "Meteor" in node.owner.name:
+		node.owner.destroy = true
+		HurtNode.play()
+		emit_signal("hit")
+		

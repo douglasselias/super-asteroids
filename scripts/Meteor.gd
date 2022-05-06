@@ -1,9 +1,10 @@
 extends Sprite
 
 var rng = RandomNumberGenerator.new()
+const SPAWN_GAP = 50
 var velocity_x = 0
 var velocity_y = 0
-var SPAWN_GAP = 50
+var destroy = false
 
 func _ready():
 	rng.randomize()
@@ -31,17 +32,6 @@ func _ready():
 		velocity_x = rng.randi_range(200, 400)
 		velocity_y = rng.randi_range(-400, 400)
 	
-#    if shouldSpawnAtX == 1 then
-#      Meteors[i].xDir = math.random(-2, 2)
-#      Meteors[i].yDir = math.random(0.2, 2)
-#    else
-#      Meteors[i].xDir = math.random(0.2, 2)
-#      Meteors[i].yDir = math.random(-2, 2)
-#    end
-
-#	position.x = 1024 / 2
-#	position.y = 600 / 2
-	
 	velocity_x = rng.randi_range(-400, 400)
 	velocity_y = rng.randi_range(-400, 400)
 
@@ -50,5 +40,4 @@ func _process(delta):
 	position.y = wrapi(position.y + velocity_y * delta, 0, 600)
 #	position.x += velocity_x * delta
 #	position.y += velocity_y * delta
-	pass
-	
+

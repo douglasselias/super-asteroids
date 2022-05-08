@@ -9,6 +9,8 @@ onready var BoosterNode = $Booster
 onready var FireNode = $Fire
 onready var ColliderNode = $Collider
 onready var HurtNode = $Hurt
+onready var BulletScene = load("res://scenes/Bullet.tscn")
+onready var BulletNode = BulletScene.instance()
 
 signal hit
 
@@ -16,6 +18,8 @@ func _ready():
 	ColliderNode.connect("body_entered", self, "_on_body_entered")
 	position.x = 1024 / 2
 	position.y = 600 / 2
+	add_child(BulletNode)
+	BulletNode.set_as_toplevel(true)
 
 func _process(delta):
 	if Input.is_action_pressed("ui_left"):
@@ -26,6 +30,15 @@ func _process(delta):
 
 	if Input.is_action_pressed("ui_up"):
 		speed += boost * delta
+	
+	if not BulletNode.visible:
+		BulletNode.position = position
+		BulletNode.rotation = rotation
+
+	if Input.is_action_just_pressed("ui_accept"):
+		if not BulletNode.visible:
+			BulletNode.visible = true
+			BulletNode.play_sfx()
 		
 	var padded_rotation = rotation + deg2rad(-90)
 		

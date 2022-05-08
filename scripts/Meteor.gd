@@ -32,12 +32,10 @@ func _ready():
 		velocity_x = rng.randi_range(200, 400)
 		velocity_y = rng.randi_range(-400, 400)
 	
-	velocity_x = rng.randi_range(-400, 400)
-	velocity_y = rng.randi_range(-400, 400)
+	velocity_x = rng.randi_range(-200, 200)
+	velocity_y = rng.randi_range(-200, 200)
 
 func _process(delta):
 	position.x = wrapi(position.x + velocity_x * delta, 0, 1024)
 	position.y = wrapi(position.y + velocity_y * delta, 0, 600)
-#	position.x += velocity_x * delta
-#	position.y += velocity_y * delta
 

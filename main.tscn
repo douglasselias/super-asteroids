@@ -9,7 +9,6 @@ script = ExtResource( 3 )
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-autoplay = true
 
 [node name="Space" type="ColorRect" parent="."]
 margin_right = 1024.0

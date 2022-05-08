@@ -6,12 +6,14 @@ onready var PlayerScene = load("res://scenes/Player.tscn")
 onready var MeteorScene = load("res://scenes/Meteor.tscn")
 onready var ExplosionScene = load("res://scenes/Explosion.tscn")
 onready var EnergyScene = load("res://scenes/Energy.tscn")
+onready var ScoreScene = load("res://scenes/Score.tscn")
 onready var GameOverScene = load("res://scenes/GameOver.tscn")
 
 onready var MenuNode = MenuScene.instance()
 onready var ControlsNode = ControlsScene.instance()
 onready var PlayerNode = PlayerScene.instance()
 onready var EnergyNode = EnergyScene.instance()
+onready var ScoreNode = ScoreScene.instance()
 onready var GameOverNode = GameOverScene.instance()
 
 enum SCENE { START, CONTROLS, PLAY, GAME_OVER }
@@ -33,6 +35,7 @@ func _ready():
 func _process(_delta):
 	if not BgMusicNode.playing and current_selected == SCENE.START:
 		BgMusicNode.play()
+		pass
 
 	if Input.is_action_just_pressed("ui_accept") and MenuNode.current_selected == 1 and current_selected != SCENE.CONTROLS:
 		current_selected = SCENE.CONTROLS
@@ -46,6 +49,7 @@ func _process(_delta):
 		current_selected = SCENE.PLAY
 		MenuNode.visible = false
 		MenuNode.Click.volume_db = -80
+		GameOverNode.reset_score()
 		
 		if is_instance_valid(PlayerNode):
 			add_child(PlayerNode)
@@ -58,6 +62,11 @@ func _process(_delta):
 		else:
 			EnergyNode = EnergyScene.instance()
 			add_child(EnergyNode)
+		if is_instance_valid(ScoreNode):
+			add_child(ScoreNode)
+		else:
+			ScoreNode = ScoreScene.instance()
+			add_child(ScoreNode)
 			
 		PlayerNode.connect("hit", self, "_on_hit")
 		if meteors.size() == 0:
@@ -96,9 +105,11 @@ func _on_hit():
 	if EnergyNode.energy == 0:
 		current_selected = SCENE.GAME_OVER
 		GameOverNode.visible = true
+		GameOverNode.play_sfx()
 
 		PlayerNode.queue_free()
 		EnergyNode.queue_free()
+		ScoreNode.queue_free()
 
 		for meteor in meteors:
 			meteor.queue_free()

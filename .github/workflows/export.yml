@@ -5,7 +5,7 @@ on:
       - main
 env:
   GODOT_VERSION: 3.4.4
-  EXPORT_NAME: godot-game-template
+  EXPORT_NAME: super-asteroids
 
 jobs:
   export-windows:

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://audio/stargaze.ogg" type="AudioStream" id=1]
+[ext_resource path="res://scenes/stars.gd" type="Script" id=2]
+
+[node name="SceneManager" type="Node2D"]
+
+[node name="Stars" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true

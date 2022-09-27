@@ -1,5 +1,7 @@
 extends Sprite
 
+signal update_score
+
 const speed = 10
 onready var VisibilityNode = VisibilityNotifier2D.new()
 onready var ColliderNode = $Collider
@@ -26,5 +28,6 @@ func _on_body_entered(node: Node):
 	if visible and "Meteor" in node.owner.name:
 		node.owner.destroy = true
 		visible = false
-		get_node("/root/Main/Score2D/Score").score += 100
+#		get_node("/root/Main/Score2D/Score").score += 100
 		get_node("/root/Main/GameOver").final_score += 100
+		emit_signal("update_score")

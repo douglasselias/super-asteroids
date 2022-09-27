@@ -21,6 +21,7 @@ func _ready():
 	add_child(BulletNode)
 	BulletNode.set_as_toplevel(true)
 
+
 func _process(delta):
 	if Input.is_action_pressed("ui_left"):
 		rotation -= rotation_speed * delta

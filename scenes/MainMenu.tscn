@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resource/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://font/Kenney Pixel.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1024, 600 )
+
+[node name="TitleContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.571667
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="RichTextLabel" parent="TitleContainer"]
+margin_left = 412.0
+margin_top = 96.0
+margin_right = 612.0
+margin_bottom = 246.0
+rect_min_size = Vector2( 200, 150 )
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][wave amp=50 freq=3]Super Asteroids[/wave][center]"
+text = "Super Asteroids"
+
+[node name="MenuContainer" type="CenterContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -331.0
+
+[node name="VContainer" type="VBoxContainer" parent="MenuContainer"]
+margin_left = 362.0
+margin_top = 113.0
+margin_right = 662.0
+margin_bottom = 217.0
+
+[node name="Play" type="RichTextLabel" parent="MenuContainer/VContainer"]
+margin_right = 300.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 300, 50 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Play[/center]"
+text = "Play"
+
+[node name="Controls" type="RichTextLabel" parent="MenuContainer/VContainer"]
+margin_top = 54.0
+margin_right = 300.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 100, 50 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Controls[/center]"
+text = "Controls"

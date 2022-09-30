@@ -20,21 +20,21 @@ enum SCENE { START, CONTROLS, PLAY, GAME_OVER }
 var current_selected = SCENE.START
 
 const meteors = []
-onready var BgMusicNode = $BgMusic
+onready var BGM = $BgMusic
 
 func _ready():
 	add_child(MenuNode)
 	add_child(ControlsNode)
 	add_child(GameOverNode)
 	ControlsNode.visible = false
-	GameOverNode.visible = false	
+	GameOverNode.visible = false
 	
-	for i in range(0, 10):
+	for _i in range(0, 10):
 		meteors.append(MeteorScene.instance())
 	
 func _process(_delta):
-	if not BgMusicNode.playing and current_selected == SCENE.START:
-		BgMusicNode.play()
+	if not BGM.playing and current_selected == SCENE.START:
+		BGM.play()
 		pass
 
 	if Input.is_action_just_pressed("ui_accept") and MenuNode.current_selected == 1 and current_selected != SCENE.CONTROLS:
@@ -54,7 +54,6 @@ func _process(_delta):
 		if is_instance_valid(PlayerNode):
 			add_child(PlayerNode)
 		else:
-			print("create node")
 			PlayerNode = PlayerScene.instance()
 			add_child(PlayerNode)
 		if is_instance_valid(EnergyNode):
@@ -70,8 +69,7 @@ func _process(_delta):
 			
 		PlayerNode.connect("hit", self, "_on_hit")
 		if meteors.size() == 0:
-			print("empty array")
-			for i in range(0, 10):
+			for _i in range(0, 10):
 				var meteor = MeteorScene.instance()
 				meteors.append(meteor)
 				add_child(meteor)
@@ -115,5 +113,5 @@ func _on_hit():
 			meteor.queue_free()
 		
 		meteors.clear()
-		BgMusicNode.stop()
+		BGM.stop()
 		

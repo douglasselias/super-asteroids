@@ -6,8 +6,9 @@ onready var viewport_size = get_viewport().size
 
 func _ready():
 	VisualServer.set_default_clear_color(Color.black)
+	rng.randomize()
 
-	for i in 100:
+	for _i in 100:
 		stars.push_back(_create_star())
 
 
@@ -24,7 +25,6 @@ func _process(_delta):
 
 
 func _create_star():
-	rng.randomize()
 	var radius = rng.randi_range(1, 3)
 	var x = rng.randi_range(0, viewport_size.x)
 	var y = rng.randi_range(0, viewport_size.y)

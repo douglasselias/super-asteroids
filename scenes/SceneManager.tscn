@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://audio/stargaze.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/stars.gd" type="Script" id=2]
 [ext_resource path="res://scenes/scene_manager.gd" type="Script" id=3]
+[ext_resource path="res://scenes/shake.gd" type="Script" id=4]
+[ext_resource path="res://scenes/planet03.png" type="Texture" id=5]
+[ext_resource path="res://scenes/planet02.png" type="Texture" id=6]
+[ext_resource path="res://scenes/spin.gd" type="Script" id=7]
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource( 3 )
@@ -10,5 +14,27 @@ script = ExtResource( 3 )
 [node name="Stars" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
+[node name="Planet02" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 903.001, 103 )
+scale = Vector2( 0.095677, 0.095677 )
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="Planet03" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 372, 257 )
+scale = Vector2( 0.041734, 0.041734 )
+texture = ExtResource( 5 )
+script = ExtResource( 7 )
+
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = -5.0
+autoplay = true
+
+[node name="Camera" type="Camera2D" parent="."]
+offset = Vector2( 512, 300 )
+current = true
+script = ExtResource( 4 )

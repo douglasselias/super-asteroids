@@ -1,25 +1,36 @@
 extends Node2D
 
-onready var BarNode = $Bar
-onready var BorderNode = $Border
+signal game_over
 
-onready var size_unit = BarNode.rect_size.x / 3
 var energy = 3
 
+onready var BarNode = $Bar
+onready var BorderNode = $Border
+onready var size_unit = BarNode.rect_size.x / 3
+
+
 func _ready():
-	position.x = 20
-	position.y = 20
+	position = Vector2(20, 20)
+
 
 func _process(_delta):
 	match (energy):
 		3:
-			change_color("mediumseagreen")
+			_change_color("mediumseagreen")
 		2:
-			change_color("orange")
+			_change_color("orange")
 		1:
-			change_color("orangered")
+			_change_color("orangered")
 
-func change_color(color: String):
+
+func _change_color(color: String):
 	BarNode.rect_size.x = size_unit * energy
 	BarNode.color = ColorN(color, 0.7)
 	BorderNode.border_color = ColorN(color)
+
+
+func _hitted():
+	energy -= 1
+	if energy == 0:
+		emit_signal("game_over")
+		energy = 3

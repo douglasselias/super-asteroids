@@ -25,6 +25,7 @@ scale_curve = SubResource( 4 )
 
 [node name="Explosion" type="Particles2D"]
 amount = 100
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -35,3 +36,4 @@ autostart = true
 
 [node name="Boom" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 2 )
+volume_db = 10.0

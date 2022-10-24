@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scenes/player-control.gd" type="Script" id=1]
-[ext_resource path="res://scenes/player.gd" type="Script" id=2]
-[ext_resource path="res://images/ship.png" type="Texture" id=3]
-[ext_resource path="res://audio/booster.ogg" type="AudioStream" id=4]
-[ext_resource path="res://audio/hurt.wav" type="AudioStream" id=5]
+[ext_resource path="res://player/player-control.gd" type="Script" id=1]
+[ext_resource path="res://player/ship.png" type="Texture" id=3]
+[ext_resource path="res://player/booster.ogg" type="AudioStream" id=4]
+[ext_resource path="res://player/hurt.wav" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.0
@@ -44,7 +43,6 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="RigidBody"]
 texture = ExtResource( 3 )
-script = ExtResource( 2 )
 
 [node name="Fire" type="Particles2D" parent="RigidBody"]
 show_behind_parent = true

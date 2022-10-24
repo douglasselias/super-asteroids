@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/stargaze.ogg-d022a3f37ab443b7a2286f89c94b1db7.oggstr"
+
+[deps]
+
+source_file="res://bg/stargaze.ogg"
+dest_files=[ "res://.import/stargaze.ogg-d022a3f37ab443b7a2286f89c94b1db7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

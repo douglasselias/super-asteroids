@@ -8,20 +8,10 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Label",
-"class": "Score",
-"language": "GDScript",
-"path": "res://scripts/Score.gd"
-} ]
-_global_script_class_icons={
-"Score": ""
-}
-
 [application]
 
 config/name="super-asteroids"
-run/main_scene="res://scenes/SceneManager.tscn"
+run/main_scene="res://SceneManager.tscn"
 
 [display]
 

@@ -4,7 +4,7 @@ extends RigidBody2D
 onready var sprite = $Sprite
 onready var rng = RandomNumberGenerator.new()
 
-onready var ExplosionScene = load("res://scenes/Explosion.tscn")
+onready var ExplosionScene = load("res://meteor/Explosion.tscn")
 
 func _ready():
 	rng.randomize()
@@ -26,7 +26,5 @@ func _on_enter(body: Node):
 		var camera = get_node("/root/SceneManager/Camera")
 		camera.apply_noise_shake_meteor_explosion()
 		var score = get_node("/root/SceneManager/Score/Score")
-#		print(score)
 		score.on_score()
 		queue_free()
-#		emit_signal("hitted")

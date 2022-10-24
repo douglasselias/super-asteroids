@@ -19,7 +19,7 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("shoot"):
 		var bullet_node = bullet_scene.instance()
 		bullet_node.global_position = global_position + Vector2(0, -18).rotated(rotation)
 		bullet_node.direction = Vector2.UP .rotated(rotation)

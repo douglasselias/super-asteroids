@@ -2,13 +2,13 @@
 
 [ext_resource path="res://bg/stars.gd" type="Script" id=1]
 [ext_resource path="res://bg/stargaze.ogg" type="AudioStream" id=2]
-[ext_resource path="res://bg/planet02.png" type="Texture" id=3]
 [ext_resource path="res://bg/planet03.png" type="Texture" id=4]
 [ext_resource path="res://bg/spin.gd" type="Script" id=5]
 [ext_resource path="res://scripts/shake.gd" type="Script" id=6]
 [ext_resource path="res://scene_manager.gd" type="Script" id=7]
 [ext_resource path="res://menus/click.wav" type="AudioStream" id=8]
 [ext_resource path="res://menus/lose.wav" type="AudioStream" id=9]
+[ext_resource path="res://bg/noise07.png" type="Texture" id=10]
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource( 7 )
@@ -21,20 +21,16 @@ script = ExtResource( 6 )
 [node name="Stars" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
-[node name="Planet02" type="Sprite" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.784314 )
-position = Vector2( 903.001, 103 )
-scale = Vector2( 0.095677, 0.095677 )
-texture = ExtResource( 3 )
-script = ExtResource( 5 )
-
-[node name="Planet03" type="Sprite" parent="."]
+[node name="Planet" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 372, 257 )
 scale = Vector2( 0.041734, 0.041734 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
+
+[node name="NoiseGas" type="Sprite" parent="Planet"]
+self_modulate = Color( 1, 1, 1, 0.498039 )
+texture = ExtResource( 10 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )

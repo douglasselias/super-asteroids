@@ -25,7 +25,7 @@ var is_on_game_over_screen = false
 
 
 func _ready():
-#	OS.window_maximized = true
+	OS.window_maximized = true
 	add_child(menu_node)
 	current_screen_stack.push_back(menu_node)
 	play_node.modulate = Color.aqua

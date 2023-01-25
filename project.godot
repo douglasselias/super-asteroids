@@ -12,6 +12,7 @@ config_version=4
 
 config/name="super-asteroids"
 run/main_scene="res://SceneManager.tscn"
+config/icon="res://player/ship.png"
 
 [display]
 
